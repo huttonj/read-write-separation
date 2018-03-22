@@ -11,7 +11,16 @@ mybatis:
      typeAliasesPackage: com.mhc.dao
      mapperScanPackage: com.mhc.dao
      configLocation: classpath:/mybatis-config.xml
-
+redis:
+    host: 120.55.119.28
+    password: zhimaguanmen
+    port: 6399
+    timeout: 0
+    pool:
+      maxActive: 8
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
 mysql:
     datasource:
         readSize: 2  #读库个数

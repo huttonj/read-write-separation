@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.buick:buick-api:1.0.58">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/buick/buick-api/1.0.58/buick-api-1.0.58.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/buick/buick-api/1.0.58/buick-api-1.0.58-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/buick/buick-api/1.0.58/buick-api-1.0.58-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

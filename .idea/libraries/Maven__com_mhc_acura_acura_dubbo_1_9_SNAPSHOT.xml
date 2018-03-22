@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.mhc.acura:acura-dubbo:1.9-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mhc/acura/acura-dubbo/1.9-SNAPSHOT/acura-dubbo-1.9-20170629.065358-11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mhc/acura/acura-dubbo/1.9-SNAPSHOT/acura-dubbo-1.9-20170629.065358-11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mhc/acura/acura-dubbo/1.9-SNAPSHOT/acura-dubbo-1.9-20170629.065358-11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

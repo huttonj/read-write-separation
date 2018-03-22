@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/read-write-separation.iml" filepath="$PROJECT_DIR$/read-write-separation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-mybatis-mysql-write-read.iml" filepath="$PROJECT_DIR$/spring-boot-mybatis-mysql-write-read.iml" />
     </modules>
   </component>
 </project>

@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="read-write-separation" />
+        <module name="spring-boot-mybatis-mysql-write-read" />
         <module name="springboot-mybatis-mysql-write-read" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="read-write-separation" target="1.7" />
+      <module name="spring-boot-mybatis-mysql-write-read" target="1.8" />
       <module name="springboot-mybatis-mysql-write-read" target="1.7" />
     </bytecodeTargetLevel>
   </component>

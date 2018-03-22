@@ -36,9 +36,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- 编译时的编码 -->
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		
+	  	<spring.boot.version>1.5.1.RELEASE</spring.boot.version>
   </properties>
-  
+
    <parent>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
@@ -46,48 +46,243 @@
 	</parent>   
   
 	<dependencies>
-	    <dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-starter-web</artifactId>
-	    </dependency>
-	    
-		  <dependency>
-   			 <groupId>org.mybatis.spring.boot</groupId>
-    		 <artifactId>mybatis-spring-boot-starter</artifactId>
-   			 <version>1.3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-    			<groupId>mysql</groupId>
-    			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-    		<groupId>com.alibaba</groupId>
-    		<artifactId>druid</artifactId>
-    		<version>1.0.29</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-        </dependency>
-        <dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-beans</artifactId>
-	</dependency>
-		
 		<!-- 分页插件 -->
 		<dependency>
     		<groupId>com.github.pagehelper</groupId>
     		<artifactId>pagehelper</artifactId>
     		<version>4.1.6</version>
 		</dependency>
+		<!-- ================ Spring Boot Jars Start ================ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<version>1.3.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>1.3.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- ================ Spring Boot Jars End ================ -->
 
+		<!-- ================ Apache commons Start ================ -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.15</version>
+		</dependency>
+		<!-- ================ Apache commons End ================ -->
+
+		<!-- ================ DB releated Jars Start ================ -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.42</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
+			<version>1.3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.29</version>
+		</dependency>
+		<!-- ================ DB releated Jars End ================ -->
+
+		<!-- ================ RPC Start ================ -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<!-- ================ RPC End ================ -->
+
+		<!-- ================ Json Jars Start ================ -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.24</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<!-- ================ Json Jars Start ================ -->
+
+		<!-- ================ Java Code Gen Start ================ -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.14</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- ================ Java Code Gen End ================ -->
+
+		<!-- ================ Test Start ================ -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<version>4.12</version>
+		</dependency>
+		<!-- ================ Test End ================ -->
+
+		<!-- ================ Aspect Start ================ -->
+		<!--<dependency>-->
+		<!--<groupId>org.aspectj</groupId>-->
+		<!--<artifactId>aspectjweaver</artifactId>-->
+		<!--<version>1.8.10</version>-->
+		<!--</dependency>-->
+		<!-- ================ Aspect End ================ -->
+
+		<!-- ================ View Template Start ================ -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<!-- ================ View Template End ================ -->
+
+		<!--================================= 参数验证框架=================================-->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+		</dependency>
+
+		<!--================================= zipkin Start=================================-->
+		<dependency>
+			<groupId>com.github.jessyZu</groupId>
+			<artifactId>dubbo-zipkin-spring-starter</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+			<version>1.1.3.RELEASE</version>
+		</dependency>
+		<!--================================= zipkin End=================================-->
+
+		<!--================================= dubbo api start=================================-->
+		<dependency>
+			<groupId>com.volks</groupId>
+			<artifactId>volks-dubbo</artifactId>
+			<version>1.0.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.maybach</groupId>
+			<artifactId>maybach-dubbo-api</artifactId>
+			<version>1.1.48</version>
+		</dependency>
+		<dependency>
+			<groupId>com.maybach</groupId>
+			<artifactId>maybach-common</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.buick</groupId>
+			<artifactId>buick-api</artifactId>
+			<version>1.0.58</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mhc.acura</groupId>
+			<artifactId>acura-dubbo</artifactId>
+			<version>1.9-SNAPSHOT</version>
+		</dependency>
+
+		<!--================================= dubbo api end=================================-->
+		<!--================================= Neo4j Start=================================-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-neo4j</artifactId>
+			<version>1.5.3.RELEASE</version>
+		</dependency>
+		<!--================================= Neo4j End=================================-->
 
 		</dependencies>
 		
@@ -98,8 +293,8 @@
 		        <artifactId>maven-compiler-plugin</artifactId>
 		       <!--  <version>3.1</version> -->
 		        <configuration>
-		          <source>1.7</source>
-		          <target>1.7</target>
+		          <source>1.8</source>
+		          <target>1.8</target>
 		          <encoding>UTF-8</encoding>
 		        </configuration>
 		      </plugin>
