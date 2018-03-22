@@ -1,4 +1,4 @@
-package com.fei.springboot.aop;
+package main.java.com.mhc.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -7,10 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.PriorityOrdered;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.fei.springboot.config.dbconfig.DataSourceContextHolder;
-import com.fei.springboot.config.dbconfig.DataSourceType;
+import main.java.com.mhc.config.dbconfig.DataSourceContextHolder;
+import main.java.com.mhc.config.dbconfig.DataSourceType;
 
 /**
  * 在service层觉得数据源
@@ -28,9 +27,9 @@ public class DataSourceAopInService implements PriorityOrdered{
 
 private static Logger log = LoggerFactory.getLogger(DataSourceAopInService.class);
 	
-/*	@Before("execution(* com.fei.springboot.service..*.find*(..)) "
-			+ " or execution(* com.fei.springboot.service..*.get*(..)) "
-			+ " or execution(* com.fei.springboot.service..*.query*(..))")
+/*	@Before("execution(* com.mhc.service..*.find*(..)) "
+			+ " or execution(* com.mhc.service..*.get*(..)) "
+			+ " or execution(* com.mhc.service..*.query*(..))")
     public void setReadDataSourceType() {
 		//如果已经开启写事务了，那之后的所有读都从写库读
 		if(!DataSourceType.write.getType().equals(DataSourceContextHolder.getReadOrWrite())){
@@ -39,26 +38,26 @@ private static Logger log = LoggerFactory.getLogger(DataSourceAopInService.class
         
     }
 
-    @Before("execution(* com.fei.springboot.service..*.insert*(..)) "
-    		+ " or execution(* com.fei.springboot.service..*.update*(..))"
-    		+ " or execution(* com.fei.springboot.service..*.add*(..))")
+    @Before("execution(* com.mhc.service..*.insert*(..)) "
+    		+ " or execution(* com.mhc.service..*.update*(..))"
+    		+ " or execution(* com.mhc.service..*.add*(..))")
     public void setWriteDataSourceType() {
         DataSourceContextHolder.setWrite();
     }*/
     
 
-	@Before("execution(* com.fei.springboot.service..*.*(..)) "
-			+ " and @annotation(com.fei.springboot.annotation.ReadDataSource) ")
+	@Before(value = "execution(* com.mhc.service..*.*(..)) "
+			+ " and @annotation(com.mhc.annotation.ReadDataSource) ")
 	public void setReadDataSourceType() {
 		//如果已经开启写事务了，那之后的所有读都从写库读
-		if(!DataSourceType.write.getType().equals(DataSourceContextHolder.getReadOrWrite())){
+		if(!DataSourceType.WRITE.getType().equals(DataSourceContextHolder.getReadOrWrite())){
 			DataSourceContextHolder.setRead();
 		}
 	    
 	}
 	
-	@Before("execution(* com.fei.springboot.service..*.*(..)) "
-			+ " and @annotation(com.fei.springboot.annotation.WriteDataSource) ")
+	@Before(value = "execution(* com.mhc.service..*.*(..)) "
+			+ " and @annotation(com.mhc.annotation.WriteDataSource) ")
 	public void setWriteDataSourceType() {
 	    DataSourceContextHolder.setWrite();
 	}

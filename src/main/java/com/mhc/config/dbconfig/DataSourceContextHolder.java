@@ -1,45 +1,45 @@
-package com.fei.springboot.config.dbconfig;
+package main.java.com.mhc.config.dbconfig;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * 本地线程，数据源上下文
- * @author Jfei
+ * @author maihe
  *
  */
+@Slf4j
 public class DataSourceContextHolder {
-
-	private static Logger log = LoggerFactory.getLogger(DataSourceContextHolder.class);
-	
-	//线程本地环境
-	private static final ThreadLocal<String> local = new ThreadLocal<String>();
-
-    public static ThreadLocal<String> getLocal() {
-        return local;
-    }
+    /**
+     * 标示当前线程读写类型
+     */
+	private static final ThreadLocal<String> local = new ThreadLocal<>();
 
     /**
      * 读库
      */
     public static void setRead() {
-        local.set(DataSourceType.read.getType());
         log.info("数据库切换到读库...");
+        local.set(DataSourceType.READ.getType());
     }
 
     /**
      * 写库
      */
     public static void setWrite() {
-        local.set(DataSourceType.write.getType());
         log.info("数据库切换到写库...");
+        local.set(DataSourceType.WRITE.getType());
     }
 
     public static String getReadOrWrite() {
         return local.get();
     }
-    
-    public static void clear(){
+
+    /**
+     * 读写类型擦除
+     */
+    public static void erase(){
     	local.remove();
     }
 }

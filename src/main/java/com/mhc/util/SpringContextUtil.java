@@ -1,12 +1,15 @@
-package com.fei.springboot.util;
+package main.java.com.mhc.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author maihe
+ */
 @Component
-public class SpringContextUtil implements ApplicationContextAware{
+public class SpringContextUtil<T> implements ApplicationContextAware{
 
 	private static ApplicationContext applicationContext = null;
 	
@@ -15,7 +18,6 @@ public class SpringContextUtil implements ApplicationContextAware{
 		if(SpringContextUtil.applicationContext == null){
 			SpringContextUtil.applicationContext = applicationContext;
 		}
-		
 	}
 
 	public static ApplicationContext getApplicationContext() {
@@ -23,8 +25,8 @@ public class SpringContextUtil implements ApplicationContextAware{
 	}
 
 	
-	public static Object getBean(String name){
-		return getApplicationContext().getBean(name);
+	public static <T> T getBean(String name, Class<T> clazz){
+		return (T) getApplicationContext().getBean(name);
 	}
 	
 	public static <T> T getBean(Class<T> clazz){

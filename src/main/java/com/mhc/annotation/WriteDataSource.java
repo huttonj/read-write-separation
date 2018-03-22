@@ -1,4 +1,4 @@
-package com.fei.springboot.annotation;
+package main.java.com.mhc.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface ReadDataSource {
+public @interface WriteDataSource {
 
 }

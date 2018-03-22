@@ -1,13 +1,17 @@
-package com.fei.springboot.config.dbconfig;
+package main.java.com.mhc.config.dbconfig;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.sql.DataSource;
 
+import javafx.util.Builder;
+import main.java.com.mhc.util.SpringContextUtil;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -28,12 +32,11 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.fei.springboot.util.SpringContextUtil;
 import com.github.pagehelper.PageHelper;
 
 @Configuration
 @AutoConfigureAfter(DataSourceConfiguration.class)
-@MapperScan(basePackages="com.fei.springboot.dao")
+@MapperScan(basePackages="com.mhc.dao")
 public class MybatisConfiguration {
 
 	private static Logger log = LoggerFactory.getLogger(MybatisConfiguration.class);
@@ -48,7 +51,7 @@ public class MybatisConfiguration {
      //  加载全局的配置文件
       @Value("${mysql.datasource.configLocation}")
       private String configLocation;
-      
+
 	@Autowired
 	@Qualifier("writeDataSource")
 	private DataSource writeDataSource;
@@ -61,15 +64,14 @@ public class MybatisConfiguration {
 	
 	
     @Bean(name="sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactorys() throws Exception {
+    public SqlSessionFactory sqlSessionFactorys() {
         log.info("--------------------  sqlSessionFactory init ---------------------");
         try {
             SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
-       //     sessionFactoryBean.setDataSource(roundRobinDataSouce);
             sessionFactoryBean.setDataSource(roundRobinDataSouceProxy());
-            
+
             // 读取配置 
-            sessionFactoryBean.setTypeAliasesPackage("com.fei.springboot.domain");
+            sessionFactoryBean.setTypeAliasesPackage("com.mhc.domain");
             
             //设置mapper.xml文件所在位置 
             Resource[] resources = new PathMatchingResourcePatternResolver().getResources(mapperLocations);
@@ -112,18 +114,17 @@ public class MybatisConfiguration {
      * @return
      */
     @Bean(name="roundRobinDataSouceProxy")
-    public AbstractRoutingDataSource roundRobinDataSouceProxy() {
+    public DataSource roundRobinDataSouceProxy() {
     	
-    	Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
+    	Map<Object, Object> targetDataSources = new ConcurrentHashMap<>();
         //把所有数据库都放在targetDataSources中,注意key值要和determineCurrentLookupKey()中代码写的一至，
         //否则切换数据源时找不到正确的数据源
-        targetDataSources.put(DataSourceType.write.getType(), writeDataSource);
-        targetDataSources.put(DataSourceType.read.getType()+"1", readDataSource01);
-        targetDataSources.put(DataSourceType.read.getType()+"2", readDataSource02);
+        targetDataSources.put(DataSourceType.WRITE.getType(), writeDataSource);
+        targetDataSources.put(DataSourceType.READ.getType()+"1", readDataSource01);
+        targetDataSources.put(DataSourceType.READ.getType()+"2", readDataSource02);
     
         final int readSize = Integer.parseInt(readDataSourceSize);
-   //     MyAbstractRoutingDataSource proxy = new MyAbstractRoutingDataSource(readSize);
-        
+
         //路由类，寻找对应的数据源
         AbstractRoutingDataSource proxy = new AbstractRoutingDataSource(){
         	 private AtomicInteger count = new AtomicInteger(0);
@@ -137,21 +138,17 @@ public class MybatisConfiguration {
         		String typeKey = DataSourceContextHolder.getReadOrWrite();
         		
         		if(typeKey == null){
-        		//	System.err.println("使用数据库write.............");
-                //    return DataSourceType.write.getType();
         			throw new NullPointerException("数据库路由时，决定使用哪个数据库源类型不能为空...");
         		}
         		
-                if (typeKey.equals(DataSourceType.write.getType())){
-                	System.err.println("使用数据库write.............");
-                    return DataSourceType.write.getType();
+                if (DataSourceType.WRITE.getType().equals(typeKey)){
+                    return DataSourceType.WRITE.getType();
                 }
                 	
                 //读库， 简单负载均衡
                 int number = count.getAndAdd(1);
                 int lookupKey = number % readSize;
-                System.err.println("使用数据库read-"+(lookupKey+1));
-                return DataSourceType.read.getType()+(lookupKey+1);
+                return DataSourceType.READ.getType()+(lookupKey+1);
         	}
         };
         
@@ -169,7 +166,7 @@ public class MybatisConfiguration {
     //事务管理
     @Bean
     public PlatformTransactionManager annotationDrivenTransactionManager() {
-        return new DataSourceTransactionManager((DataSource)SpringContextUtil.getBean("roundRobinDataSouceProxy"));
+        return new DataSourceTransactionManager(SpringContextUtil.getBean("roundRobinDataSouceProxy",DataSource.class));
     }
     
 }

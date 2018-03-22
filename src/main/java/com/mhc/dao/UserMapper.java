@@ -1,13 +1,12 @@
-package com.fei.springboot.dao;
+package main.java.com.mhc.dao;
 
 import java.util.List;
 
+import main.java.com.mhc.domain.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-
-import com.fei.springboot.domain.User;
 
 @Mapper
 public interface UserMapper {

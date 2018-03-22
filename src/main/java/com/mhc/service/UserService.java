@@ -1,18 +1,16 @@
-package com.fei.springboot.service;
+package main.java.com.mhc.service;
 
-import org.springframework.aop.framework.AopContext;
+import main.java.com.mhc.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fei.springboot.annotation.ReadDataSource;
-import com.fei.springboot.annotation.WriteDataSource;
-import com.fei.springboot.dao.UserMapper;
-import com.fei.springboot.domain.User;
-import com.fei.springboot.util.SpringContextUtil;
+import main.java.com.mhc.annotation.ReadDataSource;
+import main.java.com.mhc.annotation.WriteDataSource;
+import main.java.com.mhc.dao.UserMapper;
+import main.java.com.mhc.util.SpringContextUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

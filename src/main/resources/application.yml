@@ -7,16 +7,16 @@ server:
 
 
 mybatis:
-     mapperLocations: classpath:/com/fei/springboot/dao/*.xml
-     typeAliasesPackage: com.fei.springboot.dao    
-     mapperScanPackage: com.fei.springboot.dao
+     mapperLocations: classpath:/com/mhc/dao/*.xml
+     typeAliasesPackage: com.mhc.dao
+     mapperScanPackage: com.mhc.dao
      configLocation: classpath:/mybatis-config.xml
 
 mysql:
     datasource:
         readSize: 2  #读库个数
         type: com.alibaba.druid.pool.DruidDataSource
-        mapperLocations: classpath:/com/fei/springboot/dao/*.xml
+        mapperLocations: classpath:/com/mhc/dao/*.xml
         configLocation: classpath:/mybatis-config.xml
         write:
            url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8

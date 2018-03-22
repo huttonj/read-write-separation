@@ -1,4 +1,4 @@
-package com.fei.springboot.config.dbconfig;
+package main.java.com.mhc.config.dbconfig;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.executor.Executor;

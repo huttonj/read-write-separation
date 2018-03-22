@@ -1,13 +1,13 @@
-package com.fei.springboot.controller;
+package main.java.com.mhc.controller;
 
+import main.java.com.mhc.domain.User;
+import main.java.com.mhc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fei.springboot.domain.User;
-import com.fei.springboot.service.UserService;
 import com.github.pagehelper.PageInfo;
 
 @Controller

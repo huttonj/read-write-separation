@@ -1,4 +1,4 @@
-package com.fei.springboot.domain;
+package main.java.com.mhc.domain;
 
 public class User {
 
